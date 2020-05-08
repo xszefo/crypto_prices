@@ -1,15 +1,11 @@
 import requests
 import json
+from headers import get_headers
 
 def get_coins_details():
 	url = "https://coingecko.p.rapidapi.com/coins/list"
-
-	headers = {
-    'x-rapidapi-host': "coingecko.p.rapidapi.com",
-    'x-rapidapi-key': "3c33be481dmshfacd2991aed9fc9p1756adjsnd9543d717607"
-    }
-
-	response = requests.request("GET", url, headers=headers)
+	print(get_headers)
+	response = requests.request("GET", url, headers=get_headers)
 
 	resp_json = response.json()
 

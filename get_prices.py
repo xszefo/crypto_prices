@@ -7,9 +7,6 @@ def get_prices(my_coins):
 
 
 def main():
-	#with open('my_coins', 'r') as f:
-	#	my_coins = json.load(f)
-
 	with open('my_coins', 'r') as f:
 		my_coins = json.load(f)
 

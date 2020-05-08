@@ -1,0 +1,3 @@
+# Specify filepatterns you want git to ignore.
+headers.py
+__pycache__
