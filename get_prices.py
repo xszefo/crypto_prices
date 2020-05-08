@@ -1,5 +1,6 @@
 import requests
 import json
+from datetime import datetime
 from headers import headers
 
 def get_price(coin_id, currency):
@@ -26,8 +27,13 @@ def main():
 		price = get_price(coin['id'], currency)
 		prices[coin['id']] = (price, currency)
 
-	for k,v in prices.items():
-		print('{id} = {price} {currency}'.format(id=k, price=v[0], currency=v[1]))
-	
+	with open('prices', 'a') as f:
+		f.write(str(datetime.now()))
+		f.write('\n')
+		for k,v in prices.items():
+			result = '{id} = {price} {currency}\n'.format(id=k, price=v[0], currency=v[1])
+			f.write(result)
+		f.write(50*'*'+'\n')
+		
 if __name__ == '__main__':
 	main()
