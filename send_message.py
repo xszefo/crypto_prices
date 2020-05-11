@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
 import requests
+from headers import SLACK_BOT_USER_TOKEN
 
 def send_message(message, channel_id='G013QFWC5Q9'):
 	channel = '"channel": "{}"'.format(channel_id)
@@ -8,7 +9,7 @@ def send_message(message, channel_id='G013QFWC5Q9'):
 	data = '{'+channel+','+text+'}'
 
 	url = 'https://slack.com/api/chat.postMessage'
-	token = os.getenv('SLACK_BOT_USER_TOKEN').strip()
+	token = SLACK_BOT_USER_TOKEN#os.getenv('SLACK_BOT_USER_TOKEN').strip()
 	token_bearer = "Bearer {}".format(token)
 	headers = {
 		'Content-type': 'application/json',
