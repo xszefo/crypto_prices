@@ -3,4 +3,5 @@ headers.py
 prices
 *pycache*
 *.swp
+*.pyc
 cron_script.sh
