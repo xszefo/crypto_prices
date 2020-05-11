@@ -1,5 +1,3 @@
-#!/home/piotr/Nauka/crypto_env/bin/python
-
 import requests
 import json
 from datetime import datetime

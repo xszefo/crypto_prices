@@ -3,3 +3,4 @@ headers.py
 prices
 *pycache*
 *.swp
+cron_script.sh
