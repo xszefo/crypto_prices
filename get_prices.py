@@ -31,12 +31,12 @@ def main():
 
 	bitcoin_threshold = 8000
 	if prices['bitcoin'][0] < bitcoin_threshold:
-		message = 'Bitcoin under {} {}'.format(bitcoin_threshold, prices['bitcoin'][1])
+		message = 'Bitcoin under {} -> {} {}'.format(bitcoin_threshold, prices['bitcoin'][0], prices['bitcoin'][1])
 		slack_message(message)
 
 	ethereum_threshold = 180
 	if prices['ethereum'][0] < ethereum_threshold:
-		message = 'Ethereum under {} {}'.format(ethereum_threshold, prices['ethereum'][1])
+		message = 'Ethereum under {} -> {} {}'.format(ethereum_threshold, prices['ethereum'][0], prices['ethereum'][1])
 		slack_message(message)
 
 	with open('prices', 'a') as f:
