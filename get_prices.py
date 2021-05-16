@@ -18,7 +18,7 @@ def get_price(coin_id, currency):
             price = response.json()[coin_id][currency]
             return price
         else:
-            print('Blad {}'.format(response.status_code))
+            print('Blad HTTP{}'.format(response.status_code))
             return '-1'
 
 def main():
