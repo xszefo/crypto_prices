@@ -4,18 +4,13 @@ from datetime import datetime
 from headers import headers
 from send_message import send_message as slack_message
 
-def get_price(coin_id, currency):
+def get_price(coin_id):
         url = "https://coinranking1.p.rapidapi.com/coin/{}".format(coin_id)
-        print(url)
-        #querystring = {
-        #        "ids": {coin_id},
-        #        "vs_currencies": {currency}
-        #}
 
         response = requests.request("GET", url, headers=headers)
 
         if response.status_code == 200:
-            price = response.json()[coin_id][currency]
+            price = response.json()['data']['coin']['price']
             return price
         else:
             print('Blad HTTP{}'.format(response.status_code))
@@ -29,12 +24,13 @@ def main():
         prices = {}
         
         for coin in my_coins:
-                price = get_price(coin['coin_id'], currency)
-                prices[coin['id']] = (price, currency)
+                price_precise = get_price(coin['coin_id'])
+                price = round(float(price_precise), 2)
+                prices[coin['coin_name']] = (price, currency)
 
 
-        bit_price, bit_curr = prices['bitcoin']
-        eth_price, eth_curr = prices['ethereum']
+        bit_price, bit_curr = prices['Bitcoin']
+        eth_price, eth_curr = prices['Ethereum']
 
         #bitcoin_threshold = 8000
         #if prices['bitcoin'][0] < bitcoin_threshold:
