@@ -32,7 +32,7 @@ def main():
                 price_in_euro = round(price*ratio, 2)
                 prices[coin['coin_name']] = (price_in_euro, currency)
 
-                print(f'COIN: {coin["coin_id"]}\nprice: {price} {currency}\nprice EUR: {price_in_euro}\nratio: {ratio} ')
+                #print(f'COIN: {coin["coin_name"]}\nprice: {price} {currency}\nprice EUR: {price_in_euro}\nratio: {ratio} ')
 
 
         bit_price, bit_curr = prices['Bitcoin']
