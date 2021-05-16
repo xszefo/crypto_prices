@@ -1,14 +1,14 @@
 import requests
 import json
-from headers import headers
+from headers import headers_crypto
 
 def get_coins_details():
 	url = "https://coinranking1.p.rapidapi.com/coins"
-	response = requests.request("GET", url, headers=headers)
+	response = requests.request("GET", url, headers=headers_crypto)
 
 	resp_json = response.json()
 
-	my_coins = ['eth', 'btc', 'xrp', 'ltc', 'bch', 'eos']
+	my_coins = ['eth', 'btc']#, 'xrp', 'ltc', 'bch', 'eos']
 
 	list_of_my_coins = []
 

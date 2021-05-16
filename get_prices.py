@@ -1,32 +1,38 @@
 import requests
 import json
 from datetime import datetime
-from headers import headers
+from headers import headers_crypto
 from send_message import send_message as slack_message
+from currency_exchange import get_currency_ratio
 
 def get_price(coin_id):
         url = "https://coinranking1.p.rapidapi.com/coin/{}".format(coin_id)
-
-        response = requests.request("GET", url, headers=headers)
+        print('Getting crypto prices...')
+        response = requests.request("GET", url, headers=headers_crypto)
 
         if response.status_code == 200:
             price = response.json()['data']['coin']['price']
-            return price
+            currency = response.json()['data']['base']['symbol']
+            return float(price), currency
         else:
             print('Blad HTTP{}'.format(response.status_code))
             return '-1'
 
 def main():
-        currency = 'USD'
         with open('my_coins', 'r') as f:
                 my_coins = json.load(f)
 
         prices = {}
         
         for coin in my_coins:
-                price_precise = get_price(coin['coin_id'])
-                price = round(float(price_precise), 2)
-                prices[coin['coin_name']] = (price, currency)
+                price, currency = get_price(coin['coin_id'])
+                # Zamiana wartości w walucie z API na EURO
+                ratio = get_currency_ratio(currency, 'EUR')
+
+                price_in_euro = round(price*ratio, 2)
+                prices[coin['coin_name']] = (price_in_euro, currency)
+
+                print(f'COIN: {coin["coin_id"]}\nprice: {price} {currency}\nprice EUR: {price_in_euro}\nratio: {ratio} ')
 
 
         bit_price, bit_curr = prices['Bitcoin']
