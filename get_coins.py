@@ -3,7 +3,7 @@ import json
 from headers import headers
 
 def get_coins_details():
-	url = "https://coingecko.p.rapidapi.com/coins/list"
+	url = "https://coinranking1.p.rapidapi.com/coins"
 	response = requests.request("GET", url, headers=headers)
 
 	resp_json = response.json()
@@ -11,9 +11,14 @@ def get_coins_details():
 	my_coins = ['eth', 'btc', 'xrp', 'ltc', 'bch', 'eos']
 
 	list_of_my_coins = []
-	for coin in resp_json:
-		if coin['symbol'] in my_coins:
-			list_of_my_coins.append(coin)
+
+	for coin in resp_json['data']['coins']:
+		if coin['symbol'].lower() in my_coins:
+			temp_dict = {
+				'coin_id': coin['id'],
+				'coin_name': coin['name'],
+			}
+			list_of_my_coins.append(temp_dict)
 
 	return list_of_my_coins
 
