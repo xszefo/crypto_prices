@@ -24,10 +24,12 @@ def main():
 
         prices = {}
         
+        target_currency = 'EUR'
+
         for coin in my_coins:
                 price, currency = get_price(coin['coin_id'])
                 # Zamiana wartosci w walucie z API na EURO
-                ratio = get_currency_ratio(currency, 'EUR')
+                ratio = get_currency_ratio(currency, target_currency)
 
                 price_in_euro = round(price*ratio, 2)
                 prices[coin['coin_name']] = (price_in_euro, currency)
@@ -48,7 +50,7 @@ def main():
         #       message = 'Ethereum under {} -> {} {}'.format(ethereum_threshold, eth_price, eth_curr)
         #       slack_message(message)
         
-        message = 'Ethereum = {} {}\nBitcoin = {} {}'.format(eth_price, eth_curr, bit_price, bit_curr)
+        message = f'Ethereum = {eth_price} {target_currency}\nBitcoin = {bit_price} {target_currency}'
         slack_message(message)
 
         with open('prices', 'a') as f:
