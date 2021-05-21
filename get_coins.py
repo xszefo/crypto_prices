@@ -8,7 +8,7 @@ def get_coins_details():
 
 	resp_json = response.json()
 
-	my_coins = ['eth', 'btc']#, 'xrp', 'ltc', 'bch', 'eos']
+	my_coins = ['eth', 'btc', 'doge']#, 'xrp', 'ltc', 'bch', 'eos']
 
 	list_of_my_coins = []
 

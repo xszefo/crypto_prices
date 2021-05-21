@@ -39,6 +39,7 @@ def main():
 
         bit_price, bit_curr = prices['Bitcoin']
         eth_price, eth_curr = prices['Ethereum']
+        doge_price, doge_curr = prices['Dogecoin']
 
         #bitcoin_threshold = 8000
         #if prices['bitcoin'][0] < bitcoin_threshold:
@@ -50,7 +51,11 @@ def main():
         #       message = 'Ethereum under {} -> {} {}'.format(ethereum_threshold, eth_price, eth_curr)
         #       slack_message(message)
         
-        message = f'Ethereum = {eth_price} {target_currency}\nBitcoin = {bit_price} {target_currency}'
+        message = ''
+        for coin, details in prices.items():
+                message += f'{coin} = {details[0]} {target_currency}\n'
+        
+        #message = f'Ethereum = {eth_price} {target_currency}\nBitcoin = {bit_price} {target_currency}'
         slack_message(message)
 
         with open('prices', 'a') as f:
