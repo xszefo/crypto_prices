@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 # Specify filepatterns you want git to ignore.
 headers.py
+creds.py
 prices
 *pycache*
 *.swp
