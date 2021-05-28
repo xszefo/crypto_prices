@@ -46,7 +46,7 @@ def main():
         #       message = 'Bitcoin under {} -> {} {}'.format(bitcoin_threshold, bit_price, bit_curr)
         #       slack_message(message)
 
-        #ethereum_threshold = 180
+        #ethereum_threshold = 180 
         #if prices['ethereum'][0] < ethereum_threshold:
         #       message = 'Ethereum under {} -> {} {}'.format(ethereum_threshold, eth_price, eth_curr)
         #       slack_message(message)
