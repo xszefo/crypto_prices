@@ -29,7 +29,7 @@ def main():
         for coin in my_coins:
                 price, currency = get_price(coin['coin_id'])
                 # Zamiana wartosci w walucie z API na EURO
-                ratio = get_currency_ratio(currency, target_currency)
+                ratio = get_currency_ratio(target_currency)
 
                 price_in_euro = round(price*ratio, 2)
                 prices[coin['coin_name']] = (price_in_euro, currency)

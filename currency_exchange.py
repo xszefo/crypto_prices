@@ -1,27 +1,21 @@
 from headers import headers_exchange
 import requests
-import json
 
-def get_currency_ratio(source, destination):
-    url = 'https://currency-exchange.p.rapidapi.com/exchange'
-    querystring = {
-            "to": f"{destination}",
-            "from": f"{source}",
-            "q":"10"
-    }
+def get_currency_ratio(destination):
+    url = 'https://currencyscoop.p.rapidapi.com/latest'
 
     print('Getting currency ratio...')
 
-    response = requests.get(url, headers=headers_exchange, params=querystring)
+    response = requests.get(url, headers=headers_exchange)
 
     if response.status_code == 200:
-        return float(response.json())
-    
+        # Zwrocona zostanie wartosc 1 USD w EURO
+        return response.json()['response']['rates'][destination] 
     raise Exception('Nie udalo sie pobrac danych')
 
 
 def main():
-    print(get_currency_ratio('USD', 'EUR'))
+    print(get_currency_ratio('EUR'))
 
 
 if __name__ == '__main__':
