@@ -78,7 +78,7 @@ def main():
                 save_to_mysql(target_currency, details[0], details[1])
         
         print('Sending message to SLACK') 
-        slack_message(message)
+        #slack_message(message)
 
         with open('prices', 'a') as f:
                 f.write(str(datetime.now()))
