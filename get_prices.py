@@ -59,7 +59,7 @@ def main():
         for coin in my_coins:
                 price, currency = get_price(coin['coin_id'])
                 # Zamiana wartosci w walucie z API na EURO
-                ratio = get_currency_ratio(target_currency)
+                ratio = 0.84 #To API przestalo dzialac -> get_currency_ratio(target_currency)
 
                 price_in_euro = round(price*ratio, 5)
                 prices[coin['coin_name']] = (coin['coin_symbol'], price_in_euro, currency)
@@ -77,7 +77,7 @@ def main():
                 message += f'{coin} = {details[1]} {target_currency}\n'
                 save_to_mysql(target_currency, details[0], details[1])
         
-        print('Sending message to SLACK') 
+        #print('Sending message to SLACK') 
         #slack_message(message)
 
         with open('prices', 'a') as f:
