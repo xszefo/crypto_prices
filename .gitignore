@@ -7,10 +7,7 @@ prices
 *.swp
 *.pyc
 cron_script.sh
-=======
-*.pyc
 settings.py
 __pycache__
 *.retry
-headers.py
->>>>>>> adding changes
+settings.json
