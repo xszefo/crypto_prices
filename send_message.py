@@ -4,6 +4,7 @@ import requests
 from headers import SLACK_BOT_USER_TOKEN
 
 def send_message(message, channel_id='G013QFWC5Q9'):
+	print(f'Sending message to channel_id {channel_id}\n{message}')
 	channel = '"channel": "{}"'.format(channel_id)
 	text = '"text": "{}"'.format(message)
 	data = '{'+channel+','+text+'}'
