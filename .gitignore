@@ -5,3 +5,7 @@ prices
 *.swp
 *.pyc
 cron_script.sh
+settings.py
+__pycache__
+*.retry
+settings.json
