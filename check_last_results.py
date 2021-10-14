@@ -29,16 +29,17 @@ def main():
     """
     number_of_coins = 3
     number_of_items = 3
+    print(f'Checking last {number_of_items} results')
     last_values = get_data_from_mysql(number_of_items*number_of_coins)
     
     btc_values = [value[4] for value in last_values if value[3] == 1]
     eth_values = [value[4] for value in last_values if value[3] == 2] 
     doge_values = [value[4] for value in last_values if value[3] == 3]
 
-    if (btc_mean:=mean(btc_values)) < 45000:
+    if (btc_mean:=mean(btc_values)) < 47000:
         slack_message(f'BTC: {btc_mean}')
     
-    if (eth_mean:=mean(eth_values)) < 2800:
+    if (eth_mean:=mean(eth_values)) < 2900:
         slack_message(f'ETH: {eth_mean}')
     
     if (doge_mean:=mean(doge_values)) < 0.15:
