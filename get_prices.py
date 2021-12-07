@@ -61,7 +61,7 @@ def main():
                 # Zamiana wartosci w walucie z API na EURO
                 ratio = 0.84 #To API przestalo dzialac -> get_currency_ratio(target_currency)
 
-                price_in_euro = round(price*ratio, 5)
+                price_in_euro = round(price*ratio, 10)
                 prices[coin['coin_name']] = (coin['coin_symbol'], price_in_euro, currency)
 
                 #print(f'COIN: {coin["coin_name"]}\nprice: {price} {currency}\nprice EUR: {price_in_euro}\nratio: {ratio} ')

@@ -1,1 +1,1 @@
-[{"coin_id": 1, "coin_name": "Bitcoin", "coin_symbol": "BTC"}, {"coin_id": 2, "coin_name": "Ethereum", "coin_symbol": "ETH"}, {"coin_id": 20, "coin_name": "Dogecoin", "coin_symbol": "DOGE"}]
+[{"coin_symbol": "BTC", "coin_name": "Bitcoin", "coin_id": 1}, {"coin_symbol": "ETH", "coin_name": "Ethereum", "coin_id": 2}, {"coin_symbol": "DOGE", "coin_name": "Dogecoin", "coin_id": 20}, {"coin_symbol": "SHIB", "coin_name": "SHIBA INU", "coin_id": 72724}]
